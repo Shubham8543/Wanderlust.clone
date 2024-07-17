@@ -1,19 +1,18 @@
-<%  layout("/layouts/boilerplate")%>
+<% layout("/layouts/boilerplate")%>
 
 <body>
-    
-    <h3>Listing Details: </h3>
-    <ul>
-        <li><%= listings.title%></li>
-        <li><%= listings.description%></li>
-        <li> &#8377;<%= listings.price %></li>
-        <li><%= listings.location%></li>  
-        <li><%= listings.country%></li>
-    </ul>
-    <br>
-    <a href="/listings/<%= listings._id%>/edit">Edit this listing</a>
-    <br>
-    <form method="POST" action="/listings/<%= listings._id %>?_method=DELETE">
-        <button>Delete</button>
-    </form>
+  <h3>Listing Details:</h3>
+  <ul>
+    <li><%= listings.title%></li>
+    <li><%= listings.description%></li>
+    <li>&#8377;<%= listings.price %></li>
+    <li><%= listings.location%></li>
+    <li><%= listings.country%></li>
+  </ul>
+  <br />
+  <a href="/listings/<%= listings._id%>/edit">Edit this listing</a>
+  <br />
+  <form method="POST" action="/listings/<%= listings._id %>?_method=DELETE">
+    <button>Delete</button>
+  </form>
 </body>

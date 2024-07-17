@@ -2,28 +2,26 @@ const express = require("express");
 const app = express();
 const listing = require("./models/listing");
 const path = require("path");
-const methodoverride =require ("method-override");
-const ejsMate =require ("ejs-mate");
+const methodoverride = require("method-override");
+const ejsmate = require("ejs-mate");
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-main().catch(err => console.log(err));
+main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
-};
+  await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
+}
 
-app.set("view engine" , "ejs");
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(methodoverride("_method"));
-app.engine('ejs', ejsMate);
+app.engine("ejs", ejsmate);
 app.use(express.static(path.join(__dirname, "/public")));
 
- 
-
-app.get("/" , (req, res) =>{
-    res.send("page working");
+app.get("/", (req, res) => {
+  res.send("page working");
 });
 
 // app.get("/testlisting" ,  async (req, res) =>{
@@ -41,47 +39,44 @@ app.get("/" , (req, res) =>{
 
 // index route //
 
-app.get("/listings" , async(req, res)=>{
-   let alllisting = await listing.find({})
-   res.render("listings/index.ejs", { alllisting})
-
+app.get("/listings", async (req, res) => {
+  let alllisting = await listing.find({});
+  res.render("listings/index.ejs", { alllisting });
 });
 // new route//
-app.get("/listings/new", (req, res) =>{
-  res.render("listings/new.ejs")
+app.get("/listings/new", (req, res) => {
+  res.render("listings/new.ejs");
 });
 
 // show route //
 
-app.get ("/listings/:id" , async (req , res) =>{
-  let {id} = req.params;
-  const listings = await listing.findById(id);
-  res.render("listings/show.ejs", {listings})
-  
+app.get("/listings/:id", async (req, res) => {
+  let { id } = req.params;
+  let listings = await listing.findById(id);
+  res.render("listings/show.ejs", { listings });
 });
 
 // create route //
 
-app.post("/listings" , async(req, res) =>{
-  const newlisting = new listing (req.body.listing)
-  await newlisting.save()
+app.post("/listings", async (req, res) => {
+  const newlisting = new listing(req.body.listing);
+  await newlisting.save();
   res.redirect("/listings");
 });
 
 // edit route//
-app.get ("/listings/:id/edit" , async (req , res) =>{
-  let {id} = req.params;
+app.get("/listings/:id/edit", async (req, res) => {
+  let { id } = req.params;
   const listings = await listing.findById(id);
-  res.render("listings/edit.ejs", {listings})
-
+  res.render("listings/edit.ejs", { listings });
 });
 
 // // update route //
-app.put("/listings/:id" , async (req , res) =>{
+app.put("/listings/:id", async (req, res) => {
   let { id } = req.params;
-  await listing.findByIdAndUpdate(id ,{...req.body.listing})
+  await listing.findByIdAndUpdate(id, { ...req.body.listing });
   res.redirect(`/listings/ ${id}`);
-}); 
+});
 
 // delete route //
 app.delete("/listings/:id", async (req, res) => {
@@ -91,7 +86,6 @@ app.delete("/listings/:id", async (req, res) => {
   res.redirect("/listings");
 });
 
-
-app.listen(7090, () =>{
-    console.log("server working on the page 7090");
+app.listen(7090, () => {
+  console.log("server working on the page 7090");
 });
