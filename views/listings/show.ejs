@@ -1,18 +1,30 @@
 <% layout("/layouts/boilerplate")%>
 
-<body>
-  <h3>Listing Details:</h3>
-  <ul>
-    <li><%= listings.title%></li>
-    <li><%= listings.description%></li>
-    <li>&#8377;<%= listings.price %></li>
-    <li><%= listings.location%></li>
-    <li><%= listings.country%></li>
-  </ul>
-  <br />
-  <a href="/listings/<%=listings._id%>/edit">Edit this listing</a>
-  <br />
-  <form method="POST" action="/listings/<%= listings._id%>?_method=DELETE">
-    <button>Delete</button>
-  </form>
-</body>
+<div class="row mt-4">
+  <div class="col-8 offset-3">
+    <h3>Listing Details:</h3>
+  </div>
+  <div class="crad col-5 offset-3 show-card">
+    <img
+      src="<%= listings.image %>"
+      class="card-img-top show-img"
+      alt="listing_image"
+    />
+    <div class="card-body">
+      <p class="card-text">
+        <b><%= listing.title%></b> <%= listings.description%> <br />
+        &#8377;<%= listings.price %> <br />
+        <%= listings.location%> <br />
+        <%= listings.country%> <br />
+      </p>
+      <form method="POST" action="/listings/<%= listings._id%>?_method=DELETE">
+        <button class="btn btn-dark add-btn">Delete</button>
+      </form>
+      <br />
+      <a href="/listings/<%=listings._id%>/edit" class="btn btn-dark btn-add"
+        >Edit this listing</a
+      >
+    </div>
+    <br />
+  </div>
+</div>

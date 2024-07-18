@@ -1,3 +1,9 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 /* Navbar */
 .navbar {
     height: 5rem;
@@ -27,7 +33,7 @@
 .f-info {
     display: flex;
     height: 8rem;
-    background-color: #ebebeb;
+    background-color: #ef8282;
     flex-wrap: wrap;
     justify-content: center;
     align-items: space-evenly;
@@ -46,5 +52,63 @@ f-info-brand {
 .f-info-socials i {
     margin: 1rem;
     font-size: 1.2rem;
+
+}
+
+/* cards */
+.card {
+    border: none !important;
+    margin: 1rem;
+    border-radius: 1rem !important;
+    padding: 5px;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    object-fit: cover !important;
+    width: 100% !important;
+
+}
+
+.card-body {
+    padding: 0px !important;
+
+}
+
+.card-text {
+    font-weight: 400px;
+}
+
+.listing-link {
+    text-decoration: none;
+    /* padding: 10px; */
+}
+
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.4;
+    background-color: white;
+
+}
+
+.container {
+    flex: 1;
+}
+
+.add-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.show-img {
+    height: 30vh;
+}
+
+.show-card {
+    padding-left: 0px;
+    padding-right: 0px;
 
 }
