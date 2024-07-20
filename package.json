@@ -17,5 +17,8 @@
     "mate": "^0.21.0",
     "method-override": "^3.0.0",
     "mongoose": "^8.4.4"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.6"
   }
 }
